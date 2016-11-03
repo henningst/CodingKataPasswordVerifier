@@ -36,6 +36,13 @@ namespace Tests
         {
             var exception = Assert.Throws<ArgumentException>(() => _passwordVerifier.Verify(null));
             Assert.Equal("The password should not be null", exception.Message);
-        }        
+        }
+
+        [Fact]
+        public void Verify_WhenPasswordDoesNotContainAtLeastOneUpperCaseLetter_ShouldThrowExceptionWithUsefulMessage()
+        {
+            var exception = Assert.Throws<ArgumentException>(() => _passwordVerifier.Verify("passwordwithoutuppercase"));
+            Assert.Equal("The password should have at least one uppercase letter", exception.Message);
+        } 
     }
 }
