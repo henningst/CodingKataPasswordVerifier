@@ -4,19 +4,24 @@ using System;
 
 namespace Tests
 {
-    public class PasswordVerifiertests 
+    public class PasswordVerifierTests
     {
+        private PasswordVerifier _passwordVerifier;
+
+        public PasswordVerifierTests()
+        {
+            _passwordVerifier = new PasswordVerifier();
+        }
+
         [Fact]
         public void Verify_WhenPasswordLongerThan8Chars_ShouldReturnTrue() {
-            var passwordVerifier = new PasswordVerifier();
-            Assert.True(passwordVerifier.Verify("mypassword"));
+            Assert.True(_passwordVerifier.Verify("mypassword"));
         }
 
         [Fact]
         public void Verify_WhenPassword8CharsOrShorter_ShouldThrowException() 
         {
-            var passwordVerifier = new PasswordVerifier();
-            Assert.Throws<ArgumentException>(() => passwordVerifier.Verify("shortpw"));
+            Assert.Throws<ArgumentException>(() => _passwordVerifier.Verify("shortpw"));
         }
     }
 }
