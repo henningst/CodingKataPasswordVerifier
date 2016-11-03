@@ -29,6 +29,13 @@ namespace Tests
         {
             var exception = Assert.Throws<ArgumentException>(() => _passwordVerifier.Verify("shortpw"));
             Assert.Equal("The password must be longer than 8 chars", exception.Message);
+        }
+
+        [Fact]
+        public void Verify_WhenPasswordIsNull_ShouldThrowExceptionWithUsefulMessage()
+        {
+            var exception = Assert.Throws<ArgumentException>(() => _passwordVerifier.Verify(null));
+            Assert.Equal("The password should not be null", exception.Message);
         }        
     }
 }
