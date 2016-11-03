@@ -15,7 +15,7 @@ namespace Tests
 
         [Fact]
         public void Verify_WhenPasswordLongerThan8Chars_ShouldReturnTrue() {
-            Assert.True(_passwordVerifier.Verify("mypassword"));
+            Assert.True(_passwordVerifier.Verify("Mypassword"));
         }
 
         [Fact]

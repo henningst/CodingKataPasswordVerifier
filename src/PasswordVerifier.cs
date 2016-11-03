@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace ConsoleApplication 
 {
@@ -14,7 +15,18 @@ namespace ConsoleApplication
             if(password.Length <= 8) {
                 throw new ArgumentException("The password must be longer than 8 chars");
             }
+
+            if(!ContainsOneUppercaseLetter(password))
+            {
+                throw new ArgumentException("The password should have at least one uppercase letter"); 
+            }
+
             return true;
+        }
+
+        private bool ContainsOneUppercaseLetter(string password)
+        {
+            return password.Any(c => char.IsUpper(c));
         }
     }
 }
