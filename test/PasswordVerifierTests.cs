@@ -10,6 +10,13 @@ namespace Tests
         public void Verify_WhenPasswordLongerThan8Chars_ShouldReturnTrue() {
             var passwordVerifier = new PasswordVerifier();
             Assert.True(passwordVerifier.Verify("mypassword"));
-        }        
+        }
+
+        [Fact]
+        public void Verify_WhenPassword8CharsOrShorter_ShouldThrowException() 
+        {
+            var passwordVerifier = new PasswordVerifier();
+            Assert.Throws<ArgumentException>(() => passwordVerifier.Verify("shortpw"));
+        }
     }
 }
